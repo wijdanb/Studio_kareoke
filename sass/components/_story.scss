@@ -6,9 +6,9 @@
     background-color: rgba($color-white,.6);
     border-radius: 3px;
     padding: 6rem;
-    padding-left: 9rem; // 6 + 3from the transform:translateX(-3rem) 
+    padding-left: 9rem;  
     font-size: $default-font-size;
-    transform: skewX(-12deg); //In CSS theres currently NO WAY of having 2 transform properties applying at the same time so I cant do the direct child universal selector hack. Need to manually put skew in everything
+    transform: skewX(-12deg); 
 
 
     @include respond(tab-port){
@@ -24,26 +24,21 @@
     }
    
     &__shape{
-        width: 15rem; //makes a square 
-        height: 15rem; //makes a square
+        width: 15rem; 
+        height: 15rem;  
         background-color: orangered;
-        float: left; //Float causes an element to be completely taken out of normal flow and shifted to the left or right as far as possible, until it touches the edge of its containing box, or another floated element.When this happens, text and inline elements will wrap around the floated element. When an element is floated, its container will not adjust its height to the element, which can be an issues. The usual solution to this is to use clear fixes. 
+        float: left;  
         
-        //To make the square into a circle I use shape-outisde. I need to define a vectorized shape here like I did in clip-path with polygon. I can add circles and ellipses 
-        //shape-outside is demanding since it HAS to be floated, it HAS to have a height and width and ONLY then will it work. Its not supported on firefox or ie or microsoft edge browsers
-        //css shapes allow me to WRAP content around a custom path like circles. It can be defined by an image e.g shape-outside: url(image.png); or shape-outside: circle(50% at 50% 50%)
+      
 
         -webkit-shape-outside: circle(50% at 50% 50%);
-        //             circle(r at cx cy) where r is radius is of the circle and cx,cy are cordinates of the circle center on the X-axis and Y axis
-        shape-outside: circle(50% at 50% 50%); //first argument is radius. So if its 50% then the radius will be hald the height and width of the element, in this case it will be 7.5rem. If the radius is 7.5rem then the diameter will ofcourse be 15rem
-        //Again, all the shape-outside does is defines where the content floats around the element, in this case a circle. The text will wrap around the square as if its a circle but the shape WONT be a circle yet.
-        // If I actually WANT the element to look like a circle, then I need to use properties from css masking either clip-path or mask-image!
+ 
+        shape-outside: circle(50% at 50% 50%);  
+ 
         -webkit-clip-path: circle(50% at 50% 50%);
         clip-path: circle(50% at 50% 50%);
-
-        //the BEST way to an element around thats floated is to use transform and NOT MESS WITH MARGINS OR ANYTHING LIKE THAT
-        transform: translateX(-3rem)  skewX(12deg); //In CSS theres currently NO WAY of having 2 transform properties applying at the same time
-
+ 
+        transform: translateX(-3rem)  skewX(12deg);  
         position:relative; // for caption
 
         @include respond(phone){
@@ -55,10 +50,10 @@
     }
 
     &__img{
-        height: 100%; //flexible images for responsive web design ALWAYS NEED A WIDTH!  Im giving it a height of 100% because this image is inside of a shape which has height  defined in &__shape and so if I say height:100% that will be 100% of the parent, so 15 rem.
+        height: 100%;  
         transform: translateX(-4rem) scale(1.4);
          
-        backface-visibility: hidden; //when in doubt with weird things with animations and translations, use this!
+        backface-visibility: hidden;  
         transition: all .5s;
     }
 
@@ -84,28 +79,20 @@
         text-align: center;
         opacity:0;
         transition: all .5s;
-        backface-visibility: hidden; //this is to fix the shaking glitch
+        backface-visibility: hidden;  
     }
 
-    //.story:hover .story__caption so  //when I hover the story, I change the caption
+ 
     &:hover &__caption{
         opacity:1;
         transform: translate(-50%, -50%);
     }
 
-    //when I hover the story, I change the image
+    
     &:hover &__img{
         transform: translateX(-4rem) scale(1);
-        filter: blur(3px) brightness(80%);//filters : blur; 
-        // filters : brightness;
-        //  filters : contrast;
-        //  filters : drop-shadow; 
-        //  filters : grayscale; 
-        //  filters : hue-rotate; 
-        //  filters : inherit; 
-        //  filters : invert; 
-        //  filters : none;
-        //  filters : opacity; 
+        filter: blur(3px) brightness(80%); 
+  
 
 
     }
