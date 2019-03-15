@@ -11,7 +11,7 @@
     }
 
     &__logo-box{
-        text-align: center;  //can do this BECAUSE AN INLINE ELEMENT BEHAVES LIKE TEXT!!!
+        text-align: center;   
         margin-bottom:8rem;
 
         
@@ -31,7 +31,7 @@
     &__navigation{
         border-top: 1px solid $color-grey-light-2;
         padding-top: 2rem;
-        display:inline-block; //using this because the whie line would go too far. With inline-block, it does NOT occupy 100% of its avaialable width, only the one that the content needs.
+        display:inline-block;  
 
         @include respond(tab-port){
            width: 100%;
