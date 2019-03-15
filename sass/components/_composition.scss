@@ -9,20 +9,20 @@
         position:absolute;
         z-index: 10;
         transition: all .2s ease-in ;
-        //this is something I CANT DO WITH BORDER so its why im using outline. It gives space between outline and the element the outline is applied to
+ 
         outline-offset :0.5rem;
 
         @include respond(tab-port){
             float: left;
-            position: relative;//When you set it to relative, the top,left,right,bottom properties moves them from where they are positioned on the screen, similar to like adding margin or transform: translate. Since I want the pictures to float side by side, I need the photos to have a relative position again. I have an absolute position up there but I now want to get rid of that 
-            width: 33.33333%; //I want the width to be the same for all
+            position: relative; 
+            width: 33.33333%;  
             box-shadow: 0 1.5rem 3rem rgba($neon-blue-4, .2);
         }
 
         &--p1{
             left: 0;
             top: -2rem;
-            @include respond(tab-port){ //undo each of the elements
+            @include respond(tab-port){  
                 top: 0;
                 transform: scale(1.2);
             }
@@ -32,7 +32,7 @@
         &--p2{
             right: 0;
             top: 2rem;
-            @include respond(tab-port){ //undo each of the elements
+            @include respond(tab-port){  
                 top: -1rem;
                 transform: scale(1.3);
                 z-index:100;
@@ -44,7 +44,7 @@
         &--p3{
             left: 20%;
             top: 10rem;
-            @include respond(tab-port){ //undo each of the elements
+            @include respond(tab-port){ 
                 left: 0;
                 top: 1rem;
                 transform: scale(1.1);
@@ -64,8 +64,7 @@
 
     }
 
-    //To decrease the size of the unhovered pics i need to do this :  as soon as I hover the composition element, then select a photo that is nested inside of this, then select one that IS NOT HOVERED
-    //composition:hover composition_photo:not(:hover){}
+ 
     &:hover &__photo:not(:hover){
         transform: scale(.9);
     }
