@@ -9,7 +9,7 @@
     background-size: cover;
     background-position: top;
 	position: relative;
-/* clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); /* Start from top left and go clockwise: 0 0 are top left, 100% 0 is top right, 100% 50% is bottom right, 0 100% is bottom left  */
+ 
     -webkit-clip-path: polygon(0 0 ,100%  0 ,100% 75vh , 0 100%);
     clip-path: polygon(0 0 ,100%  0 ,100% 75vh , 0 100%);
     
@@ -41,9 +41,9 @@
 
     &__text-box{
         position: absolute;
-        top: 40%; /*Because thers a wedge at the bottom, it looks like its too low with 50% so im making it 40% */ 
+        top: 40%;  
         left: 50%;
-        transform: translate(-50%, -50%); /*Since this textbox moves relative to the header element(its parent) it looks weird on the screen but its accurate.It looks like its more than 50% to right and less than 50% from the height. So I need to translate it manually and to do that I do that with transform: translate(x,y). I used -50% because its now no longer in relation to the parent element(cos it looked weird)   */
+        transform: translate(-50%, -50%); 
         text-align: center;
     
     }
