@@ -1,59 +1,43 @@
 .row{
-    /*DIFFERENCE BETWEEN WIDTH AND MAX-WIDTH IS:
-        max-width means if we have enough available space, then it will have the width I specified BUT if there isnt enough width(the viewport is smaller than width that I specified here) then it will fill 100% of the available space that it has  */
-    max-width: $grid-width;
      
-    //background-color: rgb(255, 255, 255);
-    /*This is a trick to center block elements inside of another block element. I say that the margin on top and of the bottom is zero and left and right is auto.
-     When I say that I want margin to be auto(matic) it means that the brwoser will AUTOMATICALLY FIGURE OUT THE MARGIN THAT I WANT ON THE LEFT AND RIGHT AND SINCE THERE BOTH LEFT AND RIGHT ARE SET TO AUTO,
-    THIS MEANS THE LEFT AND RIGHT ARE SAME AND CSS WILL AUTOMATICALLY CALCULATE THE LEFT AND RIGHT MARGIN, IT TILL BE THE SAME AND WILL NATURALLY END UP BEING CENTERED AND ELEMENT WILL BE CENTERED */
+    max-width: $grid-width;
+      
     margin: 0 auto;
 
    
 
-    // without "not" it would be .row:last-child but the "not" does the opposite where it selects everything EXCEPT for the last child 
+ 
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
 
-        @include respond(tab-port){//need to remove margins for phones since they arent side by side anymore
+        @include respond(tab-port){ 
             margin-bottom: $gutter-vertical-small;
            
        }
     }
 
-    @include respond(tab-port){ //Need to change the max width for smaller screens because the row is occupying 100% of the available width because the viewport is smaller than the grid width, which is 114rem.
-        //what max-width does is that if the width is lower than the grid width, then it will simply occupy 100% of its available width. I need to change it to a smaller value
+    @include respond(tab-port){  
         max-width: 50rem;
         padding: 0 3rem;
    }
     
 
-    @include clearfix; //look at _mixins and look at the float:left in this page
-
-    //Attribute selector. Selects all of the elements which have this class equal to "col-"
-    // ^ symbol means I want the beggining to be what I set here and in this case I set it to "col-". This will select ALL the elements in which the class atrribute STARTS with and thats what this ^ symbol means
-    //nice way for me to select all of the columns at the same time
-    //sidenote: I can use other symbols instead of ^ like the * which allows me to select any class which contains this part "col-" 
-    //sidenote: another symbol I can use the $ and this means that any class that ENDS with "col-"
+    @include clearfix;  
+ 
     [class^="col-"]{
-
-        //background-color: orangered;
-        //since im using a FLOAT layout here, I need TO FLOAT THE COLUMNS. I always float ALL THESE COLUMNS TO THE LEFT SIDE
-        float: left; //beacuse the child elements of this row are now floated, HEIGHT COLLAPSES AND BECOMES 0! I NEED TO USE clearfix hack!!!!
-        //in the case of the 1-2 column, theres onle on gutter. The gutter in this case will be the right margin of the first column. the gutter is always the right margin of the column(EXCEPT THE LAST ONE!)
+ 
+        float: left;  
         &:not(:last-child){
             margin-right: $gutter-horizontal;
 
-            @include respond(tab-port){//need to remove margins for phones since they arent side by side anymore
+            @include respond(tab-port){ 
                 margin-right: 0;
                 margin-bottom: $gutter-vertical-small;
                
            }
             
         }
-
-        //gonna set the width of all the columns to 100%. Its whats usually done on mobile devices. So all the columns are basically transformed into rows. 
-        //so the entire mobile webpage will have only one single column. 
+ 
 
         @include respond(tab-port){
              width: 100% !important;
@@ -66,34 +50,27 @@
 
 
 
-
-    //first column which is colum 1-of-2. This will translate into a column which is always inside of a row.
-    //the width of this column is the entire wifth of this row MINUS the gutter divided by 2
-    //the entire space from left to right is 100% and if I subtract the gutter space I end p with the entire space that the 2 columns can occupy. If I then divide that in 2 parts, I end up with a width of one of the columns and thats what I wan
-    .col-1-of-2{
-        //calc is an extremeely powerful function in CSS where I can do mathematical operations. I can mix units in here and its HUGE difference. Thats the difference with sass and css, in sass I CANNOT do operations with multiple units so for instance I cant mix with rem with px. 
-        //This is because I compile my sass file WHILE developing the page,  even before the page is served to the user. But this kind of calculation all depends on the LAYOUT so it has to happen while the website is rendered using the visual formatting model and thats when the calculations can occur because its ONLY then when CSS and the browser knows that the percentage is, rem is and etc.. 
-        width: calc((100% - #{$gutter-horizontal})/2); //IN CSS TO USE calc function, TO USE SASS VARIABLE I NEED TO USE # THEN WRAP IT INTO {}
+   .col-1-of-2{
+          width: calc((100% - #{$gutter-horizontal})/2);  
       
     }
 
 
     .col-1-of-3{
-        //100% - 2 * gutters width and then divide by 3(since I have 3 columns) and 2* is since I have an extra gutter than .col1-of-2 for this structure
+ 
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
 
     }
 
     .col-2-of-3{
-      //this ones a bit different since the width of this column is the width of the normal columns of the  columns of 1-of-3  PLUS ANOTHER column of 1-of-3 + gutter
-      //basically multiply 2 times the width of a single 1-of-3 column and then added gutterwidth
+ 
         width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
 
     }
 
 
     .col-1-of-4{
-        //100% - 3 * gutters width and then divide by 4(since I have 4 columns) and 3* is since I have an extra gutter than .col1-of-3 for this structure
+ 
         width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
 
     }
