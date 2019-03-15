@@ -10,18 +10,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
-
-    // @include respond(tab-port){
-    //     height: 100vh;
-    //     width: 100%;
-
-    // }
-
-    // @include respond(phone){
-    //     height: 100vh;
-    //     width: 100%;
-
-    // }
+ 
 
     &__content{
         @include absCenter;
@@ -99,12 +88,12 @@
         margin-bottom: 2rem;
 
         -moz-column-count: 2;
-        -moz-column-gap: 4rem; //1em is 14px in this case
+        -moz-column-gap: 4rem;  
         -moz-column-rule: 1px solid $color-black;
 
-        //column layour is new
+       
         column-count: 2;
-        column-gap: 4rem; //1em is 14px in this case
+        column-gap: 4rem; 
         column-rule: 1px solid $color-black;
 
         -moz-hyphens: auto;
@@ -121,8 +110,8 @@
     }
 
 
-    //OPEN states
-    &:target{ //psuedoclass :target applies to the element which is the target when I click on a button or when URL changes to having target in it. In html its the id
+ 
+    &:target{  
         opacity:1;
         visibility: visible;
     }
