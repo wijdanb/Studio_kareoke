@@ -9,25 +9,23 @@
         
         <link rel="stylesheet" href="css/icon-font.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png"> <!--favicon is the icon near the https in the browser. There are 3 ways of doing this but this one is the most COMPATIBLE with all browsers -->
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">  
         
         <title>Studio Lounge Toronto Karaoke | Best Noraebang Bar in Gta, North York, Thornhill, Willowdale</title>
     </head>
 
     <body>
 
-        <!--What makes navigation work, especially the clicks. What makes it work is the checkbox hack-->
-        <!--3 steps to make the effect work: 1. Have a checkbox which will be hidden later 2: have a label connected to that checkbox, which is where user clicks(which will be burger icon) 3. Reveal the entire navigation in the background AS SOON as the checkbox becomes checked! I can then use the checked pseudoclass in css to style it-->
-        <div class="navigation">
+          <div class="navigation">
             <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
             
             <label for="navi-toggle" class ="navigation__button">
                 <span class="navigation__icon"> &nbsp;</span>
             </label>
             
-            <div class="navigation__background">&nbsp;</div> <!--&nbsp; will make the background empty-->
+            <div class="navigation__background">&nbsp;</div>  
            
-            <nav class="navigation__nav"><!--This will be the huge container spanning the entire page(viewport). I can then center the ul vertically and horizontally-->
+            <nav class="navigation__nav">
                 <ul class="navigation__list">
                     <li class="navigation__item"><a href="#" class="navigation__link"><span>01</span>About Studio</a></li>
                     <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Features</a></li>
@@ -60,7 +58,7 @@
 
         </header>
 
-        <!--main is an html5 element that sells search engines or screen readers that this is the main part of our site-->
+ 
         <main>
             <section class="section-about">
                 <div class="u-center-text u-margin-bottom-big">
@@ -95,8 +93,7 @@
             <section class="section-features">
                 <div class="row">
                     <div class = "col-1-of-4">
-                         <!--This time I'm creating another box inside since I  want more space between the elements than the gutter but more importantly its because I want the feature box to scale up when I hover it and its better to create a sepereate element for that rather an manipulating this kind of stuff on our columns. 
-                                I NEVER WANT TO TOUCH THE COLUMNS, THE CODE FOR THE GRID SHOULD REMAIN UNCHANGED SO NO SCALING OR, NO ADDITIONAL PADDING! If I want stuff like that then ADD ANOTHER BOX IN THERE!-->
+                        
                         <div class ="feature-box">
                                 <i class="feature-box__icon icon-basic-calculator"></i>
                                 <h3 class="heading-tertiary u-margin-bottom-small">Karoeke Rates</h3>
@@ -107,8 +104,7 @@
                     </div>
                     <div class="row">
                             <div class = "col-1-of-4">
-                                 <!--This time I'm creating another box inside since I  want more space between the elements than the gutter but more importantly its because I want the feature box to scale up when I hover it and its better to create a sepereate element for that rather an manipulating this kind of stuff on our columns. 
-                                        I NEVER WANT TO TOUCH THE COLUMNS, THE CODE FOR THE GRID SHOULD REMAIN UNCHANGED SO NO SCALING OR, NO ADDITIONAL PADDING! If I want stuff like that then ADD ANOTHER BOX IN THERE!-->
+                             
                                 <div class ="feature-box">
                                         <i class="feature-box__icon icon-basic-rss"></i>
                                         <h3 class="heading-tertiary u-margin-bottom-small">Events & News</h3>
@@ -119,8 +115,7 @@
                             </div>
                         <div class="row">
                                 <div class = "col-1-of-4">
-                                     <!--This time I'm creating another box inside since I  want more space between the elements than the gutter but more importantly its because I want the feature box to scale up when I hover it and its better to create a sepereate element for that rather an manipulating this kind of stuff on our columns. 
-                                            I NEVER WANT TO TOUCH THE COLUMNS, THE CODE FOR THE GRID SHOULD REMAIN UNCHANGED SO NO SCALING OR, NO ADDITIONAL PADDING! If I want stuff like that then ADD ANOTHER BOX IN THERE!-->
+                             
                                     <div class ="feature-box">
                                             <i class="feature-box__icon icon-basic-rss"></i>
                                             <h3 class="heading-tertiary u-margin-bottom-small">Gallery</h3>
@@ -131,8 +126,7 @@
                                 </div>
                             <div class="row">
                                     <div class = "col-1-of-4">
-                                         <!--This time I'm creating another box inside since I  want more space between the elements than the gutter but more importantly its because I want the feature box to scale up when I hover it and its better to create a sepereate element for that rather an manipulating this kind of stuff on our columns. 
-                                                I NEVER WANT TO TOUCH THE COLUMNS, THE CODE FOR THE GRID SHOULD REMAIN UNCHANGED SO NO SCALING OR, NO ADDITIONAL PADDING! If I want stuff like that then ADD ANOTHER BOX IN THERE!-->
+                          
                                         <div class ="feature-box">
                                                 <i class="feature-box__icon icon-basic-rss"></i>
                                                 <h3 class="heading-tertiary u-margin-bottom-small">Contact</h3>
@@ -155,7 +149,7 @@
                                     <div class ="card">
                                         <div class="card__side card__side--front ">
                                                 <div class="card__picture card__picture--1">
-                                                    &nbsp; <!--&nbsp is the html for empty space-->
+                                                    &nbsp;  
                                                 </div>
                                                 <h4 class="card__heading">
                                                     <span class ="card__heading-span card__heading-span--1">Corporate Parties</span>
@@ -187,7 +181,7 @@
                                         <div class ="card">
                                                 <div class="card__side card__side--front ">
                                                         <div class="card__picture card__picture--2">
-                                                            &nbsp; <!--&nbsp is the html for empty space-->
+                                                            &nbsp;  
                                                         </div>
                                                         <h4 class="card__heading">
                                                             <span class ="card__heading-span card__heading-span--2">Daily Half price happy hour</span>
@@ -221,7 +215,7 @@
                                         <div class ="card">
                                                 <div class="card__side card__side--front ">
                                                         <div class="card__picture card__picture--3">
-                                                            &nbsp; <!--&nbsp is the html for empty space-->
+                                                            &nbsp;  
                                                         </div>
                                                         <h4 class="card__heading">
                                                             <span class ="card__heading-span card__heading-span--3">Kareoke birthday parties</span>
@@ -260,9 +254,8 @@
 
             <section class="section-stories">
                 <div class="bg-video">
-                    <!--video element-->
-                    <video class= "bg-video__content" autoplay muted loop> <!--autoplay is usually seen as a bad thing but in this case since its a background video, AND im also putting it as muted. amd also to loop -->  
-                           <!--Theres a source tag in HTML which allows me to embed a video file into the video element-->
+                  
+                    <video class= "bg-video__content" autoplay muted loop>  
                             <source src="img/Disco.mp4" type="video/mp4">
                             <source src="img/Disco.ogv" type="video/ogv">
                                 Your Browser is not supported :(
@@ -275,10 +268,10 @@
                                 We make people genuinely enjoy their time
                             </h2>
                      </div>
-                      <!--Not going to put any columns in the row, just using the nicely centered container that the row gives us so I can put my story component there-->
+ 
                     <div class="row">
                         <div class="story">
-                            <figure class = "story__shape"><!--using figure because its semantically the best thing to do because I will have an image together with a caption and so I have the image and then a caption(John Smith)-->
+                            <figure class = "story__shape"> 
                                 <img src ="img/storyAvatar.png" alt="Person who visited studio" class="story__img">
                                 <figcaption class="story__caption">Jane Smith</figcaption>
                             </figure>
@@ -298,7 +291,7 @@
             <section class="section-book">
                 <div class="row">
                     <div class="book">
-                        <div class="book__form"> <!--Will be a container sitting on the left side of the box where I can put my form-->
+                        <div class="book__form"> 
                             <form action="#" class="form">
                                 <div class="u-margin-bottom-small">
                                         <h2 class="heading-secondary-lower">
@@ -306,29 +299,28 @@
                                         </h2>
                                 </div>
                                 <div class="form__group">
-                                    <input type="text" class="form__input" placeholder="Full Name" id="name" required  > <!--"required" will make sure that the browser will not allow to submit the form UNLESS this field is actually filled out -->
-                                    <label for="name" class="form__label">Full name</label><!--"for" needs an id to work so i put an id on input so label the label and input are connected-->
-                                </div>
+                                    <input type="text" class="form__input" placeholder="Full Name" id="name" required  >  
+                                    <label for="name" class="form__label">Full name</label> 
 
                                 <div class="form__group">
-                                        <input type="email" class="form__input" placeholder="Email address" id="email" required  > <!--"required" will make sure that the browser will not allow to submit the form UNLESS this field is actually filled out -->
-                                        <label for="email" class="form__label">Email address</label><!--"for" needs an id to work so i put an id on input so label the label and input are connected-->
+                                        <input type="email" class="form__input" placeholder="Email address" id="email" required  > 
+                                        <label for="email" class="form__label">Email address</label> 
                                 </div>
                                 
                                 <div class="form__group">
                                     <div class="form__radio-group">
-                                        <!--Radio button connected to a label. When I click on the label, then radio button will be selected-->
-                                            <input type="radio" class="form__radio-input" id="small" name="size"> <!--The name attribute is here because if it wasnt, then when I click on the circle button on both of the circle, then it will stay on both of them and not on only the one that was last clicked BUT thats not what I want. I want it where only ONE can be selected -->
-                                            <label for="small" class="form__radio-label"> <!--"for" needs an id to work so i put an id on input so label the label and input are connected-->
-                                                <span class="form__radio-button"></span><!--for style to replace the radio button-->
+                      
+                                            <input type="radio" class="form__radio-input" id="small" name="size"> 
+                                            <label for="small" class="form__radio-label">  
+                                                <span class="form__radio-button"></span> 
                                                     Small group  
                                                 </label>
                                     </div>
 
                                     <div class="form__radio-group">
-                                            <input type="radio" class="form__radio-input" id="large" name="size"><!--Plan is to HIDE this input button -->
-                                            <label for="large" class="form__radio-label"> <!--"for" needs an id to work so i put an id on input so label the label and input are connected-->
-                                                <span class="form__radio-button"></span><!--for style to replace the radio button-->
+                                            <input type="radio" class="form__radio-input" id="large" name="size"> 
+                                            <label for="large" class="form__radio-label">  
+                                                <span class="form__radio-button"></span> 
                                                     Large group  
                                                 </label>
                                         </div>
@@ -379,7 +371,7 @@
                         --><img src="img/bar2.jpg" alt="studio photo" class="popup__img">
                 </div>
                 <div class="popup__right">
-                    <a href="#studio-tours" class="popup__close">&times;</a> <!--This is so I can close the popup. &times; is an X-->
+                    <a href="#studio-tours" class="popup__close">&times;</a>  
                     <h2 class="heading-secondary-higher  .u-margin-bottom-small"> Start booking now</h2>
                     <h3 class="heading-tertiary  .u-margin-bottom-small"> Important &ndash; Please read the terms and conditions before booking </h3>
                     <p class="popup__text">
@@ -394,86 +386,7 @@
 
 
 
-        <!-- <section class ="grid-test">
-            <div class="row">
-                <div class="col-1-of-2">
-                    Col 1 of 2
-                </div>
-                <div class="col-1-of-2">
-                    Col 1 of 2
-                    </div>
-            </div>
-
-            <div class="row">
-                    <div class="col-1-of-3">
-                        Col 1 of 3
-                    </div>
-                        <div class="col-1-of-3">
-                            Col 1 of 3
-                        </div>
-                            <div class="col-1-of-3">
-                                Col 1 of 3
-                            </div>
-            </div>
-
-
-            what i will be using for studio  
-            <div class="row">
-                    <div class="col-1-of-3">
-                        Col 1 of 3
-                    </div>
-                        <div class="col-2-of-3">
-                            Col 2 of 3
-                        </div>
-                            
-            </div>
-
-            
-            <div class="row">
-                    <div class="col-1-of-4">
-                            Col 1 of 4
-                    </div>
-                        <div class="col-1-of-4">
-                                Col 1 of 4
-                        </div>
-                            <div class="col-1-of-4">
-                                    Col 1 of 4
-                            </div>
-                            <div class="col-1-of-4">
-                                    Col 1 of 4
-                                </div>
-            </div>
-
-            
-            <div class="row">
-                    <div class="col-1-of-4">
-                            Col 1 of 4
-                    </div>
-                        <div class="col-1-of-4">
-                                Col 1 of 4
-                        </div>
-                            <div class="col-2-of-4">
-                                    Col 2 of 4
-                            </div>
-                            
-            </div>
-
-                
-            <div class="row">
-                    <div class="col-1-of-4">
-                            Col 1 of 4
-                    </div>
-                        <div class="col-3-of-4">
-                                Col 3 of 4
-                       
-                            
-            </div>
-
-
-
-
-        </section>
-                    -->
+      
 
         
     </body>
