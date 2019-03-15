@@ -1,33 +1,28 @@
- /*Universal selector (reset) */
+ 
 *,
-*::after, /*because I used inherit in box-sizing, if I didnt include the after and before pseudo-element, the pseudo elements(btn after:: etc) wouldnt have worked because they wouldnt get this behaviour, only real elements would! */
+*::after,  
 *::before
 {
     margin: 0;
     padding : 0;
 	
-	box-sizing: inherit; /*Using the inherit keyword to force inheritance. By itself, box-sizing property is not inherited but by setting the box-sizing property on each and every element on the entire page to inherit, it will automaticcally inherit whatever I put here on border-box. This makes it easier to change the box-sizing,like in plugins or other components, where I might wnt to use a different property for box-sizing.    */
-
+	box-sizing: inherit;  
 }
 
 html{
-    //THIS DEFINES WHAT 1rem IS!
-    font-size: 62.5%; /*if 10px is the root font-size then 1 rem is 10px. 100% is 16px and since I want 10px. I just do 100/16 = 6.25 then 6.25 * 10 which is 62.5%. THIS ALLOWS USER TO ZOOM IN ONTO THE PAGE AUTOMATICALLY NOT ONLY TO CHANGE THE FONT-SIZE BUT ALSO ZOOM IN ON THE PAGE(NOT REALLY ZOOMING BUT INCREASING ALL OF THE MEASUREMENTS THAT I HAVE ON MY PAGE  */
-    
-    // @include respond(phone){ //dont need this since the query after this takes care of this query
-    //     font-size: 50%;
-    // }
+  
+    font-size: 62.5%;  
 
-    @include respond(tab-land){ //width < 1200 ?
-        font-size: 56.25% ; //I want 1rem to be = 9px, 9/16 = 56.25% 
+    @include respond(tab-land){  
+        font-size: 56.25% ;  
     }
 
-    @include respond(tab-port){ //width < 900?
-        font-size: 50%; //I want 1rem to be = to 8px so  I do 8/16=50%
+    @include respond(tab-port){  
+        font-size: 50%;  
     }
 
     @include respond(big-desktop){
-        font-size: 75%; // I want 1rem to be = to 12px so 12/16 = 75% 
+        font-size: 75%;  
     }
 }
 
@@ -36,7 +31,7 @@ body{
     box-sizing: border-box;
     padding: 2rem;
 
-    @include respond(tab-port){ //width < 900?
+    @include respond(tab-port){  
         padding:0;
     }
 }
