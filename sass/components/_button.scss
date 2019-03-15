@@ -1,0 +1,160 @@
+
+// :link is the link psuedo-class. Pseudo-classes are a special state of a selector. This link here in this case if a state of the btn selector like when a user hovers an element, or when a checkbox is clicked or if I want to select a last-child and etc.  
+////I use pseudo-classes to style elements under a special condition. The :link is a special state of a selector when it is an anchor(a) element so it functions as a link. Thers also a visited state where the user has already clicked on the button before and then sees the button again.Default is blue before clicking and purple after. 
+///I dont want the default, I want visited state to look exactly like the link state so I just put them together*/
+.btn{
+    &, //so all of this gets applied to <button> element as well
+    &:link, &:visited{
+// 	/*2nd way to animate besides @keyframes,animation-name,animation-duration is the transition property instead!    */
+// 	/*First arg is to specify which properties I want to animate then 2nd arg is time.This is the shorthand version */
+// 	/* transition HAS to be in the initial state! Just how it works. Basically saying, on the initial state, there can be a transition on all the properties  */
+// 	transition: all .2s;
+// 	 /* this means that its relative to ITSELF. If I give it no other positioning properties(top,left,bottom or right) then it will have NO efect on its POSITIONING AT ALL!. */
+// 	/* BUT if I did give tit some other positioning property e.g top:10px; then it will shift its position 10 pixels down from where it would NORMALLY be  */
+// 	/* Another thing can also happen when I set position:relative; It introduces the ABILITY TO USE z-index!!!!!! Even if I DONT set a z-index value, this element will not appear ON TOP of any other statically positioned element(position:static WHICH IS DEFAULT!)  */
+// 	/*I cant fight it by setting a higher z-index value on a statically positioned element!  */
+// 	/*the other thing is that it limits the scope of abosultely positioned child elements(position:absolute)*/
+// 	 position: relative; 
+        text-transform: uppercase;
+        text-decoration: none; /*To get rid of the  underline  */
+        padding: 1.5rem 2.5rem;
+        display: inline-block;
+        font-size: $default-font-size;
+        border-radius: 10rem;
+
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        /*2nd way to animate besides @keyframes,animation-name,animation-duration is the transition property instead!    */
+        /*First arg is to specify which properties I want to animate then 2nd arg is time.This is the shorthand version */
+        /* transition HAS to be in the initial state! Just how it works. Basically saying, on the initial state, there can be a transition on all the properties  */
+        transition: all .2s;
+        
+         /* this means that its relative to ITSELF. If I give it no other positioning properties(top,left,bottom or right) then it will have NO efect on its POSITIONING AT ALL!. */
+        /* BUT if I did give tit some other positioning property e.g top:10px; then it will shift its position 10 pixels down from where it would NORMALLY be  */
+        /* Another thing can also happen when I set position:relative; It introduces the ABILITY TO USE z-index!!!!!! Even if I DONT set a z-index value, this element will not appear ON TOP of any other statically positioned element(position:static WHICH IS DEFAULT!)  */
+        /*I cant fight it by setting a higher z-index value on a statically positioned element!  */
+        /*the other thing is that it limits the scope of abosultely positioned child elements(position:absolute)*/
+         position: relative;
+         text-shadow: 0.2rem 0.2rem 2rem rgb(100, 150, 191);
+
+         //change for the <button> element
+         border: none;
+         cursor: pointer;
+
+         
+
+    }
+
+    &:hover{
+       
+        transform: translateY(-0.5rem);
+        /* first arg is the offset in the x direction, 2nd arg is offset in y directin, 3rd arg is blur */
+        box-shadow: 0 1rem 2rem rgb(0, 0, 0);
+
+          /*When I hover the button THEN i want certain styles for the ::after psuedo-element. Basically this is an ::after pseudo-element ONLY when I have the button on the hover state   */
+          &::after{
+            /* can put scalar for scales*/
+            transform:scaleX(1.4) scaleY(1.6);
+            opacity:0;
+            }
+    
+     }
+
+     
+    &:active /*its -1px in relation to .btn:link AND NOT btn:hover.Its only realted to the INITIAL link state */
+    &:focus{  
+        outline:none;
+        transform: translateY(-0.1rem);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
+        
+    }
+        
+    &--white{ /* the button infront of the .btn */
+        background-color :         rgb(19, 19, 19);
+        color: rgb(169, 212, 250);
+        box-shadow: 0 .55rem 1.0rem   rgb(0, 0, 0);
+
+        &::after{
+            background-color: rgb(19, 19, 19);
+        }
+    }
+
+
+    &--green{ /* the button infront of the .btn */
+        background-color: $color-green;
+        color: rgb(231, 231, 231);
+        box-shadow: 0 .55rem 1.0rem rgb(0, 0, 0);
+
+        &::after{
+            background-color:$color-green;
+    
+        }
+
+    }
+
+    &::after{ /* pseudo-element ::after is treated like a child of the button so if its width or height is 100% then it will be the same as the button(its parent). ::after is used for adding cosmetic content to an element with the content property  */
+        content: "";
+        display: inline-block;
+        height: 100%; 
+        width: 100%; 
+        border-radius: 10rem;
+        /*absolute is a very powerful type of positioning that allows me to literally place any page element EXACTYL where I want it.
+        I use the positionig properties: top,left,bottom and right to set the location. I need to remember that these values will be relative to the next parent element with relative(Or absolute) positioning. If theres no such parent, it will default all the way buck to the <html> element itself meaning it will be placed relatively to the page itself */
+        /*THe trade-off however is that these elements are removed from the flow of elements on the pafe. An element with this type of positioning is not affected by other elements. This is a serious thing to consider every time I use absolute positioning. Its overuse or improper use can limit the flexibility of your site  */
+        position: absolute;  
+        top: 0;
+        left: 0;
+        /* To make it behind */
+        z-index:-1;
+        transition: all .4s;
+
+    }
+
+    &--animated{
+        animation: moveInFromBottom 1.5s ease-out .75s;/*.75s is for the animation-delay! */
+        /* the animation property above is good but when I refresh the page, because of the animation-delay, I can see the button in its original position THEN after a second or two, be teleported down and then do all the styling in the animation(moveInBottom). 
+        To make it invisibly float up, I can use  animation-fill-mode and use backwards*/
+        /*animation-fill-mode property specifies a style for the element when the animation is not playing. CSS animations dont affect the element before the first keyframe is played or after the last keyframe is played BUT the animation-fill-mode property can override this behaviour   */
+        /*animation-fill-mode : none ;is the default value. Animations wont apply any styles to the element before or after its executing*/
+        /*animation-fill-mode : forwards; The element will retain the style values that is set by the last keyframe(depends on animation-direction(default is normal for this property) & animation-iteration count) */
+        /*animation-fill-mode : backwards; The element will get the style values that is set by the first keyframe(depends on animation-direction(default is normal for this property)*/
+        /*animation-fill-mode : both; The animation will follow the rules for both forwards and backwards, extending the animation properties in both directions */
+        /*animation-fill-mode : intial; sets this propert to its default value  */
+        /*animation-fill-mode : inheritl inherits this property from its parent element */
+        animation-fill-mode: backwards;/*This will apply all the animation-styles beforehand the styles up to 0% before the animation starts. So the styles in the animation moveInBottom(opacity:0;transform(translate()) will be applied BEFORE the animation even starts! */	
+    
+    }
+
+}
+
+
+
+.btn-text{
+    &:link,
+    &:visited{
+        font-size: $default-font-size;
+        color: $color-button;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-button;
+        padding: 3px;
+
+    }
+
+    &:hover{
+        background-color: $color-button;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black,.15);
+        transform: translateY(-2px);
+        border-radius: 0.16rem;
+
+    }
+
+    &:active{
+        box-shadow: 0 .5rem 1rem rgba($color-black,.15);
+        transform: translateY(0);
+
+    }
+
+}
+ 

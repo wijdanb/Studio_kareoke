@@ -1,0 +1,198 @@
+.navigation{
+    &__checkbox{
+        display:none;
+
+    }
+
+    &__button{
+        background-color: $color-white;
+        height:  7rem;
+        width: 7rem;
+        position: fixed;
+        top: 6rem;  
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black,.1);
+
+        text-align:center;
+        cursor:pointer;
+
+        @include respond(tab-port){
+            top: 4rem;
+            right: 4rem;
+        }
+
+        @include respond(phone){
+            top: 3rem;
+            right: 3rem;
+            }
+
+    }
+
+    &__background{
+        height: 6rem;
+        width:6rem;
+        border-radius: 50%;
+        position:fixed;
+        top: 6.5rem;
+        right:6.5rem;
+
+        //radial gradient starts in the MIDDLE of an element and goes from there in all the outside directions
+        background-image:  radial-gradient($color-radial-dark, $color-radial-light);        z-index: 1000;
+        z-index: 1000;
+
+        //as soon as navigation is open, I will scale the entire background by huge a number. 
+       // transform: scale(80);
+
+       transition: transform .8s  cubic-bezier(0.86, 0, 0.07, 1);
+
+       @include respond(tab-port){
+        top: 4.5rem;
+        right: 4.5rem;
+        }
+
+        @include respond(phone){
+            top: 3.5rem;
+            right: 3.5rem;
+        }
+    }
+
+    &__nav{
+         
+       
+     
+        position: fixed;
+        width:100vw;
+        height: 100vh;
+       
+        
+        
+        top: 0;
+        left:-100vw;
+        z-index:1500;
+
+       
+        opacity: 0;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+       
+    }
+
+    &__list{ //this is what im gonna center inside of the nav container
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+        width:100%;
+
+        
+    }
+
+    &__item{
+        margin: 1rem;
+
+        
+    }
+
+    &__link{
+            &:link,
+            &:visited{
+            display:inline-block; // so that padding is applied the way it should be
+            font-size: 3rem;
+            font-weight : 300; 
+            padding: 1rem 1.5rem;
+            color:$color-white;
+          
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            background-size: 250%;
+            transition: all .4s;
+
+            span{
+                margin-right:1.5rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-primary-dark;
+            transform: translateX(1rem);
+
+        }
+
+
+    }
+
+
+
+    //checkbox hack. I hit the label and the checkbox becomes checked. Then I want the navigation background  to become  invisible
+    //to select the navigation__background, I use the general sibling selector but only when its checked so I also use the checked pseudoclass
+    &__checkbox:checked ~ &__background{
+        transform: scale(80);
+    }
+
+
+    //FUNCTINOALITY
+    &__checkbox:checked ~ &__nav{
+        
+        opacity:1;
+        left: 0;
+    }
+
+
+    //ICON- for the burger icon, making one line asand then the line above and below will be psuedo-elements ::before and ::after
+    &__icon{
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after{
+            width: 3rem;
+            height: 2px;
+            background-color: $color-black;
+            display:inline-block;
+
+        }
+
+        &::before,//for the pseudo elements to work ,they NEED to have their content proeprty defined
+        &::after{
+            content: "";
+            position: absolute;
+            left:0;
+            transition: all .2s;
+        }
+
+        //transform-origin describes where the transformation happens. Changes the center of rotation
+        &::before{top: -.8rem; }//to move it up
+        &::after{top:.8rem;}
+    }
+
+    //I can also choose the icon since the icon is a child element of the button
+    &__button:hover &__icon::before{
+        top: -1rem;
+    }
+    &__button:hover &__icon::after{
+        top: 1rem;
+    }
+
+    //when checkbox is selected(checked) then I call its brother(button) THEN I select the brothers(buttons) child(icon)
+    &__checkbox:checked + &__button &__icon{
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before{
+        top:0;
+        transform: rotate(135deg); //180deg-45degf to make the rotation look cooler
+    }
+
+    &__checkbox:checked + &__button &__icon::after{
+       top:0;
+       transform: rotate(-135deg);
+    }
+}

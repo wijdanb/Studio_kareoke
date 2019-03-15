@@ -1,0 +1,256 @@
+.card{
+    //FUNCTIONALITY
+    //to make it look like its coming out, I need to use "perspective". The way to define the perspective is to define it ON THE PARENT ELEMENT!
+    perspective:  180rem; //the lower the value, the more dramatic the perspective
+    -moz-perspective: 150rem;
+   
+    position:relative;
+    height: 52rem; //need it in parent cos of position:absolute
+
+    &__side{
+        background-color: orangered;
+        
+        font-size: 2rem;
+        height: 52rem; //need it in parent cos of position:absolute
+        transition: all .8s ease;
+
+        //the front and back cards need to be ontop of one another, so I need to use absolute positioning
+         //this will cause the height to get collapsed since the cards are now out of natural flow therefore the parent collapsed and lost its height! 
+         //To fix this problem with floats, I need to use clearfix BUT WITH position:absolute I CANT DO THIS! I CANT DO ANYTHING WITH PURE CSS TO FIX THIS ISSUE so im gonna have to specify the same height I gave to the card itself
+        position: absolute; 
+        
+        top:0;
+        left:0;
+        width:100%;//need this or it will use the width depending on text
+        backface-visibility: hidden; //hidden hides the back part
+        border-radius:3px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba(124, 1, 118, 0.671);
+
+        &--front{
+            background-color:  rgb(255, 255, 255);
+
+        }
+
+        &--back{
+            background-color: orangered;
+            transform: rotateY(-180deg);
+
+            &-1{
+                background-image: linear-gradient(to right bottom, $color-primary-light,  rgb(202, 31, 114));
+       
+            }
+
+             
+            &-2{
+                background-image: linear-gradient(to right bottom, $color-primary-light,$color-card-primary-dark);
+       
+            }
+
+             
+            &-3{
+                background-image: linear-gradient(to right bottom, $color-primary-light,$color-card-tertiary-dark);
+       
+            }
+        }
+        
+    
+
+    }
+
+ 
+    //when I hover the card, I want the side to transform. 
+    //card.hover .card__side{} /I dont put the :hover directly on the card side since Ill have more sides
+    &:hover &__side--front{
+        transform: rotateY(180deg);
+    }
+
+    &:hover &__side--back{
+        transform: rotateY(0);
+    }
+
+
+    //FRONT SIDE STYLING
+    &__picture{
+        background-size: cover;
+        height: 20rem;
+        background-blend-mode:screen;
+        -webkit-clip-path: polygon(0 0 , 100% 0,100% 85%, 0 100%);
+        clip-path: polygon(0 0 , 100% 0,100% 85%, 0 100%);
+        //clip-path removes the border radius from parent so need to manually do it:
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+       
+        
+        &--1{
+            background-image: linear-gradient(to right, $color-primary-light,  rgb(202, 31, 114)),url( ../img/bar2.jpg);
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom, rgba($color-card-primary-light,.5),$color-card-primary-dark),url( ../img/bar2.jpg);
+        }
+
+        &--3{
+            background-image: linear-gradient(to right bottom, rgba($color-card-tertiary-light,.5),$color-card-tertiary-dark),url( ../img/bar2.jpg);
+        }
+
+
+
+    }
+
+    &__heading{
+        font-family: 'Lato', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-align:right;
+        color:white;
+        position: absolute;
+        top:12rem;
+        right:2rem;
+        width: 75%;
+
+    }
+
+    &__heading-span{
+        padding: 1rem 1.5rem;
+        //box-decoration-break seperates the line into kind of like different elements. clone applies all the declerations I have in the selector(which in this case is only the padding to all of the boxes that are created by an element). So in this case its one element, two boxes and both styled in the same way and same padding
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone; 
+
+        &--1{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-primary-light,.85), 
+            rgba(202, 31, 114, 0.85));
+
+        }
+
+        &--2{
+            background-image: linear-gradient(to right bottom, rgba($color-card-primary-light,.85),$color-card-primary-dark);
+
+        }
+        &--3{
+            background-image: linear-gradient(to right bottom, rgba($color-card-tertiary-light,.85),$color-card-tertiary-dark);
+
+        }
+    }
+
+    &__details{
+        padding: 3rem;
+
+        ul{
+            list-style:none;
+            width:80%;
+            margin: 0 auto; //easiest way to center a block element inside of a block element
+
+            li{
+
+                text-align:center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child){
+                    border-bottom: 1px solid rgb(112, 111, 111);
+                }
+
+            }
+        }
+
+    }
+
+
+    &__call-to-action{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+        width: 90%;
+        text-align: center;
+        color:white;
+    }
+
+    &__price-box{
+        text-align: center;
+        color: $color-grey-dark;
+        margin-bottom: 8rem;
+        color:white;
+
+    }
+
+    &__price-only{
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value{
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+    &__price-number{
+        font-size: 3rem;
+        font-weight: 100;
+    }
+
+
+
+
+
+
+    @include respond(tab-port){
+        height: auto;  
+        border-radius:3px;
+        background-color: $color-grey-dark-4;
+        box-shadow: 0 1.5rem 4rem rgba(124, 1, 118, 0.671);
+
+        &__side{
+            height: auto;  
+            position: relative; 
+            box-shadow: none;
+
+            &--back{
+                transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+         &:hover &__side--front{
+            transform: rotateY(0);
+        }
+
+        &:hover &__side--back{
+            transform: rotateY(0);
+        }
+
+        &__details{
+            padding: 1rem 3rem;
+        }
+
+        &__call-to-action{
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: translate(0);
+            width: 100%;
+            padding: 7rem 4rem 4rem 4rem;
+        
+        }
+
+        &__price-box{
+           
+            margin-bottom: 3rem;
+       
+
+        }
+
+        
+        &__price-value{
+            font-size: 4rem;
+            font-weight: 100;
+        }
+
+ 
+
+
+    }
+    
+ }
+

@@ -1,0 +1,51 @@
+.header{ 
+	height: 95vh; 
+	background-image: linear-gradient(
+        to right bottom,
+        rgb(7, 30, 38),
+        rgb(6, 37, 53),
+        rgb(126, 19, 70)
+        ),url(../img/bar.jpg);
+    background-size: cover;
+    background-position: top;
+	position: relative;
+/* clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%); /* Start from top left and go clockwise: 0 0 are top left, 100% 0 is top right, 100% 50% is bottom right, 0 100% is bottom left  */
+    -webkit-clip-path: polygon(0 0 ,100%  0 ,100% 75vh , 0 100%);
+    clip-path: polygon(0 0 ,100%  0 ,100% 75vh , 0 100%);
+    
+    @include respond(tab-port){ 
+        -webkit-clip-path: polygon(0 0 ,100%  0 ,100% 85vh , 0 100%);
+        clip-path: polygon(0 0 ,100%  0 ,100% 85vh , 0 100%);
+       
+   }
+
+
+    &__logo-box{
+      
+        z-index:1;
+
+    }
+     
+    &__logo{
+    padding-left: 2%;
+    margin-top: 1%;
+     
+	height: 5%;
+    z-index:1;
+    
+    @include respond(tab-port){
+        margin-top: 4%;
+        height: 3%;
+     }
+    }
+
+    &__text-box{
+        position: absolute;
+        top: 40%; /*Because thers a wedge at the bottom, it looks like its too low with 50% so im making it 40% */ 
+        left: 50%;
+        transform: translate(-50%, -50%); /*Since this textbox moves relative to the header element(its parent) it looks weird on the screen but its accurate.It looks like its more than 50% to right and less than 50% from the height. So I need to translate it manually and to do that I do that with transform: translate(x,y). I used -50% because its now no longer in relation to the parent element(cos it looked weird)   */
+        text-align: center;
+    
+    }
+
+}

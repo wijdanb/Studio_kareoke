@@ -1,0 +1,154 @@
+.section-about{
+    //background-color: $neon-red-4;
+    padding: 25rem 0;
+    background-image: linear-gradient(
+        to left bottom,
+        
+        rgb(7, 30, 38),
+        rgb(6, 37, 53)
+         
+        ),url(../img/bar2.jpg);
+
+    margin-top: -20vh;
+    //margin-top: 2%;
+
+    @include respond(tab-port){
+        padding: 20rem 0; 
+    }
+}
+
+.section-features{
+    padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom,
+        rgb(126, 19, 70),
+        rgb(7, 30, 38),
+        rgb(6, 37, 53)
+        ),url(../img/Disco.jpg);
+    background-size: cover; //so it can nicely cover the entire section
+
+
+    transform: skewY(-7deg);
+
+    //now need to skew the featurebox. I COULD skew it in the featurebox.scss BUT another way is by using the "direct child selector" 
+    //direct child selects the first child
+    //the direct childs I want to select are ALL of them so I use the universal selector(*) that selects everything that is a direct child(in this case its only 1 child which is "row")!
+    //.section-features *
+    & > * {
+        transform: skewY(7deg);
+    }
+
+    
+    @include respond(tab-port){
+        padding: 15rem 0;
+     }
+
+    
+}
+
+
+.studio-tours{
+    
+    margin-top: -10rem;
+ 
+   // padding: 15rem 0 15rem 0;
+    padding: 25rem 0 15rem 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    background-image: linear-gradient(
+        to left top,
+        rgb(7, 30, 38),
+        rgb(6, 37, 53)
+         
+        ),url(../img/Disco.jpg);
+        background-size: cover; //so it can nicely cover the entire section
+
+        transform: skewY(-7deg);
+
+        //now need to skew the featurebox. I COULD skew it in the featurebox.scss BUT another way is by using the "direct child selector" 
+        //direct child selects the first child
+        //the direct childs I want to select are ALL of them so I use the universal selector(*) that selects everything that is a direct child(in this case its only 1 child which is "row")!
+        //.section-features *
+            & > * {
+            transform: skewY(7deg);
+    
+        }
+        
+        @include respond(tab-port){
+            padding:  20rem 0 10rem 0;
+         }
+        
+
+
+     
+}
+
+.section-stories{
+    position: relative;
+    padding:15rem 0;
+
+    @include respond(tab-port){
+        padding:  10rem 0;
+     }
+   
+}
+
+.section-book{
+
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, rgb(7, 30, 38), rgb(6, 37, 53));
+
+    @include respond(tab-port){
+        padding:  10rem 0;
+     }
+}
+
+.book{
+    //To make the clip path effect, another way is to use gradient with transparency
+    //I want the gradient to be ontop of the image so I add another background-image here.
+    //I dont just have to specify a direction for gradient, can ALSO USE degrees!
+ //if I put the same percentage number for the color values, then I get a solid line as opposed to a gradient 
+    background-image : linear-gradient(105deg, 
+                                       rgba($color-white,.9) 0%,
+                                       rgba($color-white, .9) 50%,
+                                     transparent 50%) 
+                                     ,url(../img/bar2.jpg); //transparent IS A VALID CSS COLOR! ITS THE ABSENCE OF ANY COLOR
+   
+    background-size: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(20,20,20, .8);
+
+   
+
+    @include respond(tab-land){
+        background-image : linear-gradient(105deg, 
+        rgba($color-white,.9) 0%,
+        rgba($color-white, .9) 65%,
+      transparent 65%) 
+      ,url(../img/bar2.jpg);  
+      background-size: cover;
+    }
+
+    @include respond(tab-port){
+        background-image : linear-gradient(to right, 
+        rgba($color-white,.9) 0%,
+        rgba($color-white, .9) 100%)
+      ,url(../img/bar2.jpg);  
+      background-size: cover;
+    }
+
+
+    &__form{
+        margin-top:15rem;
+        width:50%;
+        padding: 6rem;
+
+        @include respond(tab-land){
+            width:65%;
+        }
+
+        @include respond(tab-port){
+            width:100%;
+        }
+    }
+}
