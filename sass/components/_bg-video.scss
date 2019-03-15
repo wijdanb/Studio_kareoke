@@ -1,19 +1,18 @@
 .bg-video{
-    position: absolute; //need to put position:relative in section-stories for this to work
+    position: absolute;  
  
     height: 100%;
     width: 100%;
     z-index: -1;
     opacity: 0.15;
-    //no matter what I do, the video will still overflow a bit. WHEN something OVERFLOWS OUR ELEMENT I USE overflow:hidden
+ 
     overflow:hidden;
 
-    &__content{ //selecting the video itself
+    &__content{  
         height:100%;
-        width: 100%;//this will shrink it BUT it will cover even less of our section because it maintains aspect ratio of this video. So if it was wider before, then it was ofcourse also higher. Now im left with an empty section on the top of the section. 
-        //WHAT DO I DO NOW?! 
-        //I use object-fit to do that. object-fit: cover will make this element(the actual video in this case) and will fill the entire parent while still maintaining its aspect ratio. The part of the video that doesnt fit will simply be clipped off. 
-        object-fit: cover; //this is similar to the background size cover which I do all the time with the background images. INSTEAD OF COVER I COULD HAVE "fill". This would fill in all the height and the width BUT NOT MAINTAIN ITS ASPECT RATIO
+        width: 100%; 
+ 
+        object-fit: cover;  
 
          
     }
