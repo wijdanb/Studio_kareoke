@@ -8,13 +8,13 @@
     
     &__input{
         font-size: 1.5rem;
-        font-family: inherit; //by default browsers dont give input elements the font family that I have set for the webpage. I can set it to inherit 
-        color:inherit; //input elements DONT INHERTI THE FONT PROPERTIES
-        padding: 1.5rem 2rem; //always make it a bit bigger on the sidees
+        font-family: inherit;  
+        color:inherit; 
+        padding: 1.5rem 2rem;  
         border-radius: 2px;
         background-color: rgba($color-white,0.9);
         border: none;
-        border-bottom: 3px solid transparent; //without this, the input underneath the first will be pushed down due to the border-bottom. 
+        border-bottom: 3px solid transparent;  
         width: 90%;
         display: block;
 
@@ -25,8 +25,7 @@
         }
 
         &:focus{
-            outline: none; //I dont want the blue border(which is default) for when I click the input. 
-            //BUT focus is for accesibility reasons! So I should ALWAYS make the form elements that are focused visible! Ill do that by giving it a box shadow and border at the bottom
+            outline: none;  
             box-shadow: 0 1rem 2rem rgba($color-black, .1);
             border-bottom: 3px solid $color-primary;
            
@@ -38,8 +37,7 @@
 
         }
     
-        //When I start typing, the color goes from default placeholder color to black. I want it to be that default grey color so
-        //I do -webkit-input-placeholder BUT ONLY works on safari and chome. Remember that pseudo elements represent things that are actually ON the webpage and so a placeholder is a pseudo element.  Pseudo class are states like 
+         
         &::-webkit-input-placeholder{
             color: $color-grey-dark-2;
     
@@ -64,10 +62,7 @@
     }
 
     
-    //adjacent sibling is what comes immediately after the element I  select in the first place. So I selected input and then with the adjacent sibling selector, I select the first sibling, which is the label.  In this case it works. Even if there was an element between in here, e.g another div inside and a button,
-    // then I would still use a sibling selector BUT I WOULD HAVE TO USE ~ .  
-    //One particular thing about the sibling selector is that whatever I select(in this case the label)  always HAS to be after the first element(input in this case). label needs to be after the input which is the case here IN ORDER TO BE SELECTED WITH THE SIBLING SELECTOR. If I ad label before input, THERE WOULD BE NO WAY OF SELECTING THE LABEL FROM THE INPUT, WOULDNT WORK!
-    &__input:placeholder-shown + &__label{
+      &__input:placeholder-shown + &__label{
         opacity: 0;
         visibility: hidden;
         transform: translateY(-4rem);
@@ -99,14 +94,14 @@
     }
 
     &__radio-input{
-        display:none; //to get rid of the default radio circles
+        display:none;  
 
     }
     
 
     &__radio-label{
         font-size: $default-font-size;
-        cursor: pointer; //brings the hand
+        cursor: pointer;  
         position:relative;
         padding-left: 4.5rem;
 
@@ -143,9 +138,7 @@
 
     }
 
-    //as soon as I hit the label element, the radio input(circle) becomes checked.
-    //the :checked pseudoclass  lets me select all the radio elements that are check.
-    //then I select the sibling (__radio-label) then the child(radio-button) because thats the one I want to change each time that the radio input is selected.  
+ 
     &__radio-input:checked ~ &__radio-label &__radio-button::after{
         opacity:1;
        
